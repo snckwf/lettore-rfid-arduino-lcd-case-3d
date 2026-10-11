@@ -29,6 +29,36 @@ Dal Library Manager dell’IDE Arduino installare:
 - **MFRC522** (di Miguel Balboa)
 - **LiquidCrystal_I2C** (di Frank de Brabander)
 
+## Collegamenti elettrici
+
+Scheda: **Arduino UNO/Nano**. Pin verificati sullo sketch (`SS_PIN 10`, `RST_PIN 9`, LCD I2C `0x27` 16×2).
+
+### Modulo RFID RC522 (SPI) — ⚠️ alimentazione a 3,3 V
+
+| RC522 | Arduino |
+|---|---|
+| SDA (SS) | D10 |
+| SCK | D13 |
+| MOSI | D11 |
+| MISO | D12 |
+| IRQ | non collegato |
+| RST | D9 |
+| 3.3V | **3.3V** |
+| GND | GND |
+
+### Display LCD I2C (5 V)
+
+| LCD I2C | Arduino |
+|---|---|
+| VCC | 5V |
+| GND | GND |
+| SDA | A4 |
+| SCL | A5 |
+
+- **Non alimentare l'RC522 a 5 V**: si danneggia. Le linee SPI a 5 V di UNO/Nano in pratica funzionano, ma per un montaggio definitivo è consigliato un adattatore di livello.
+- Se l'LCD resta vuoto, regola il trimmer del contrasto sul retro del modulo I2C o prova l'indirizzo `0x3F`.
+- Su Arduino **Mega** i pin SPI sono diversi: SCK 52, MOSI 51, MISO 50.
+
 ## Contenuto del repository
 
 | Percorso | Descrizione |
